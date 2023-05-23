@@ -62,19 +62,65 @@
 //
 // --------------class-----------------------
 
-import {Player} from './classes/player.js'
-import {IsPlayer} from "./interfaces/IsPlayer.js";
+// import {Player} from './classes/player.js'
+// import {IsPlayer} from "./interfaces/IsPlayer.js";
+//
+// const masrafi = new Player('Masrafi', 40, 'BD');
+// let sakib: IsPlayer;
+// sakib =  new Player('Sakib', 40, 'BD');
+//
+// // @ts-ignore
+// // document.write(JSON.stringify(masrafi))
+// // document.write(sakib.name)
+//
+// const players: Player[] = [];
+// players.push();
+// // @ts-ignore
+// document.write(players)
 
-const masrafi = new Player('Masrafi', 40, 'BD');
-let sakib: IsPlayer;
-sakib =  new Player('Sakib', 40, 'BD');
+
+
+// -----------------GENERICS-------
+const addId = <T extends {
+    name:string,
+    age:number
+}>(obj: T) => {
+    let id = Math.floor(Math.random() * 100);
+    return {...obj, id}
+}
+
+let user = addId({
+    name: "Tanvir",
+    age : 24,
+    country: "Bangladesh"
+})
 
 // @ts-ignore
-// document.write(JSON.stringify(masrafi))
-// document.write(sakib.name)
+document.write(addId(user))
 
-const players: Player[] = [];
-players.push();
+
+
+// -----------------Interface generic---------------
+
+enum statusType{
+    SUCCESS,FAILURE,UNAUTHINCATED,FORBIDDEN
+}
+
+interface ApiResponse<T>{
+    status : number;
+    type: statusType;
+    data: T;
+}
+
+const responseOne : ApiResponse<object> ={
+    status: 200,
+    type: statusType.SUCCESS,
+    data:{
+        name : 'Test',
+        userId: 20,
+    }
+
+}
+
 // @ts-ignore
-document.write(players)
-
+console.log(responseOne.data);

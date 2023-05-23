@@ -1,3 +1,4 @@
+"use strict";
 // document.write('Hello Tanvir Hossen Bappy' + '</br>')
 //
 //
@@ -61,13 +62,48 @@
 // document.write(userDetailsFun(1,{name:'Tanjib',age:30}))
 //
 // --------------class-----------------------
-import { Player } from './classes/player.js';
-const masrafi = new Player('Masrafi', 40, 'BD');
-const sakib = new Player('Sakib', 40, 'BD');
+// import {Player} from './classes/player.js'
+// import {IsPlayer} from "./interfaces/IsPlayer.js";
+//
+// const masrafi = new Player('Masrafi', 40, 'BD');
+// let sakib: IsPlayer;
+// sakib =  new Player('Sakib', 40, 'BD');
+//
+// // @ts-ignore
+// // document.write(JSON.stringify(masrafi))
+// // document.write(sakib.name)
+//
+// const players: Player[] = [];
+// players.push();
+// // @ts-ignore
+// document.write(players)
+// -----------------GENERICS-------
+const addId = (obj) => {
+    let id = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { id });
+};
+let user = addId({
+    name: "Tanvir",
+    age: 24,
+    country: "Bangladesh"
+});
 // @ts-ignore
-// document.write(JSON.stringify(masrafi))
-// document.write(sakib.name)
-const players = [];
-players.push();
+document.write(addId(user));
+// -----------------Interface generic---------------
+var statusType;
+(function (statusType) {
+    statusType[statusType["SUCCESS"] = 0] = "SUCCESS";
+    statusType[statusType["FAILURE"] = 1] = "FAILURE";
+    statusType[statusType["UNAUTHINCATED"] = 2] = "UNAUTHINCATED";
+    statusType[statusType["FORBIDDEN"] = 3] = "FORBIDDEN";
+})(statusType || (statusType = {}));
+const responseOne = {
+    status: 200,
+    type: statusType.SUCCESS,
+    data: {
+        name: 'Test',
+        userId: 20,
+    }
+};
 // @ts-ignore
-document.write(players);
+console.log(responseOne.data);
