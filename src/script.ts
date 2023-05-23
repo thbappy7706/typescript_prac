@@ -63,10 +63,11 @@
 // --------------class-----------------------
 
 import {Player} from './classes/player.js'
+import {IsPlayer} from "./interfaces/IsPlayer.js";
 
 const masrafi = new Player('Masrafi', 40, 'BD');
-const sakib = new Player('Sakib', 40, 'BD');
-
+let sakib: IsPlayer;
+sakib =  new Player('Sakib', 40, 'BD');
 
 // @ts-ignore
 // document.write(JSON.stringify(masrafi))
@@ -76,3 +77,4 @@ const players: Player[] = [];
 players.push();
 // @ts-ignore
 document.write(players)
+

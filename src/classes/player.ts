@@ -1,4 +1,6 @@
-export  class Player {
+import {IsPlayer} from "../interfaces/IsPlayer.js";
+
+export class Player implements IsPlayer{
     //  name: string;
     //  age: number;
     // readonly country: string;
@@ -11,7 +13,7 @@ export  class Player {
 
     constructor(
         public name: string,
-        private age: number,
+        public age: number,
         readonly country: string,) {
     }
 
